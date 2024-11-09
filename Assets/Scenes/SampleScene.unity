@@ -267,7 +267,7 @@ Camera:
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 1
+  m_FOVAxisMode: 0
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
@@ -287,7 +287,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 75.12379
+  field of view: 40.2
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -314,7 +314,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 162.9, z: -0}
+  m_LocalPosition: {x: 0, y: 204.3, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -921,13 +921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f59d9bf2c2e0d4eb4fee29c86eaca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions:
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
-  - {x: 0, y: 0}
   plane: {fileID: 2073626767}
-  newColor: {r: 0, g: 0, b: 1, a: 1}
-  moveSpeed: 200
+  moveSpeed: 15
 --- !u!64 &2073626769
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1009,7 +1004,7 @@ Transform:
   m_GameObject: {fileID: 2073626767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
-  m_LocalPosition: {x: -120, y: -1, z: -100}
+  m_LocalPosition: {x: -79.1, y: 22.5, z: -100}
   m_LocalScale: {x: 25, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
