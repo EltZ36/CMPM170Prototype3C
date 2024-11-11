@@ -6,17 +6,11 @@ public class waves : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject plane;
-    public Color newColor = Color.blue; // Set the new color here
     public float moveSpeed = 2.5f; 
     private bool movingUp = true;
 
     void Start()
     {
-        // Get the mesh renderer component of the plane
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-
-        // Set the new color for the material
-        meshRenderer.material.color = newColor;
     }
 
     // Update is called once per frame

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9d33ec5acf58cb448a924e2639339ce7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chargeBar: {fileID: 532647502117132022, guid: c4f779eeaacfe164f8cfa44470e8f63b,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
