@@ -11,7 +11,7 @@ public class chargeBar : MonoBehaviour
     private Image bar;
     private bool mouseDown = false;
     private const int MAX_DISTANCE = 200;
-    private float degrees = 0;
+    private float degrees = 0;  // angle of chargebar
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class chargeBar : MonoBehaviour
             float fillPercentage = Mathf.Clamp01(distance / MAX_DISTANCE); 
             Debug.Log($"Distance: {distance}, Fill: {fillPercentage}");
             bar.fillAmount = fillPercentage;
-            OnMouseHold();
+            OnMouseHold();  //determine chargebar angle as mouse is held
             // if(distance > MAX_DISTANCE){
             //     Debug.Log("MAX DIST");
             //     bar.fillAmount = 100f;
@@ -69,19 +69,21 @@ public class chargeBar : MonoBehaviour
         mouseDown = true;
         startPos.x = -Input.mousePosition.y;
         startPos.z = Input.mousePosition.x;
-        bar.rectTransform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
+        bar.rectTransform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f); // set chargebar position to mouse position when preparing to launch a boat
     }
 
     private void OnMouseHold()
     {
-        if(Input.mousePosition.x > bar.rectTransform.position.x)
+        if(Input.mousePosition.x > bar.rectTransform.position.x)    // Math.Atan() only works for ranges between 0 and -180 degrees, so we need a conditional for values between 180 and 0 degrees 
         {
+            // Find arctan between opposite/adjacent (y component/x component), convert to degrees, and subtract 90 to compensate for 0 degrees being up instead of right
             degrees = (float)(Math.Atan((Input.mousePosition.y - bar.rectTransform.position.y) / (Input.mousePosition.x - bar.rectTransform.position.x)) * (180 / Math.PI)) - 90f;
         } else
         {
+            // Invert result by adding 180 degrees
             degrees = 180f + (float)(Math.Atan((Input.mousePosition.y - bar.rectTransform.position.y) / (Input.mousePosition.x - bar.rectTransform.position.x)) * (180 / Math.PI)) - 90f;
         }
-        bar.rectTransform.eulerAngles = new Vector3(0f, 0f, degrees);
+        bar.rectTransform.eulerAngles = new Vector3(0f, 0f, degrees);   // z component is all that matters for ui rotation, make sure chargebar anchor is set to x: 0.5 and y: 0
     }
 
       private void OnMouseUp()
