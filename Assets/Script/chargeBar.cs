@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using System;
 
 public class chargeBar : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class chargeBar : MonoBehaviour
     private Image bar;
     private bool mouseDown = false;
     private const int MAX_DISTANCE = 200;
+    private float degrees = 0;
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class chargeBar : MonoBehaviour
             float fillPercentage = Mathf.Clamp01(distance / MAX_DISTANCE); 
             Debug.Log($"Distance: {distance}, Fill: {fillPercentage}");
             bar.fillAmount = fillPercentage;
+            OnMouseHold();
             // if(distance > MAX_DISTANCE){
             //     Debug.Log("MAX DIST");
             //     bar.fillAmount = 100f;
@@ -66,6 +69,19 @@ public class chargeBar : MonoBehaviour
         mouseDown = true;
         startPos.x = -Input.mousePosition.y;
         startPos.z = Input.mousePosition.x;
+        bar.rectTransform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f);
+    }
+
+    private void OnMouseHold()
+    {
+        if(Input.mousePosition.x > bar.rectTransform.position.x)
+        {
+            degrees = (float)(Math.Atan((Input.mousePosition.y - bar.rectTransform.position.y) / (Input.mousePosition.x - bar.rectTransform.position.x)) * (180 / Math.PI)) - 90f;
+        } else
+        {
+            degrees = 180f + (float)(Math.Atan((Input.mousePosition.y - bar.rectTransform.position.y) / (Input.mousePosition.x - bar.rectTransform.position.x)) * (180 / Math.PI)) - 90f;
+        }
+        bar.rectTransform.eulerAngles = new Vector3(0f, 0f, degrees);
     }
 
       private void OnMouseUp()
