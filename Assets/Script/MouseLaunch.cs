@@ -10,6 +10,7 @@ public class MouseLaunch : MonoBehaviour
     Vector3 startPos;
     Vector3 endPos;
     Vector3 forceVector;
+    public KeyCode quitKey = KeyCode.Escape;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,10 @@ public class MouseLaunch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(quitKey))
+        {
+            Application.Quit();
+        }
         // if(mouseDown){
         //     // emit event with difference between startpos x and z and currentpos x and z
         //     endPos.x = -Input.mousePosition.y;

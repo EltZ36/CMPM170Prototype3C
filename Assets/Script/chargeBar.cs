@@ -74,7 +74,7 @@ public class chargeBar : MonoBehaviour
 
     private void OnMouseHold()
     {
-        if(Input.mousePosition.x > bar.rectTransform.position.x)    // Math.Atan() only works for ranges between 0 and -180 degrees, so we need a conditional for values between 180 and 0 degrees 
+        if(Input.mousePosition.x >= bar.rectTransform.position.x)    // Math.Atan() only works for ranges between 0 and -180 degrees, so we need a conditional for values between 180 and 0 degrees 
         {
             // Find arctan between opposite/adjacent (y component/x component), convert to degrees, and subtract 90 to compensate for 0 degrees being up instead of right
             degrees = (float)(Math.Atan((Input.mousePosition.y - bar.rectTransform.position.y) / (Input.mousePosition.x - bar.rectTransform.position.x)) * (180 / Math.PI)) - 90f;
